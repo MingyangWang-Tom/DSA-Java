@@ -1,8 +1,8 @@
 public class Search {
 
     public static void main(String[] args) {
-        int nums[] = {1, 3, 5, 7, 9};
-        int target = 7;
+        int nums[] = new int[1000];
+        int target = 900;
 
         int result1 = linearSearch(nums, target);
         int result2 = binarySearch(nums, target);
@@ -49,4 +49,19 @@ public class Search {
         System.out.println("Steps taken by Binary: " + steps);
         return -1;
     }
+
+    public static int bsRecursive(int[] nums, int target, int left, int right){
+        if (left <= right){
+            int mid = (left + right) / 2;
+            if (nums[mid] ==  target){
+                return mid;
+            } else if (nums[mid] < target){
+                bsRecursive(nums, target, mid + 1, right);
+            } else {
+                bsRecursive(nums, target, left, mid-1);
+            }
+        }
+        return -1;
+    }
+
 }
